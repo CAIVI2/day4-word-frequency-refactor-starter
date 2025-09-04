@@ -9,29 +9,28 @@ public class WordFrequencyGame {
         String[] words = inputStr.split(ANY_SPACE_SEPARATOR);
         if (words.length == 1) {
             return inputStr + " 1";
-        } else {
-            try {
-                //split the input string with 1 to n pieces of spaces
-                List<Input> frequencies = countFrequencies(words);
-                frequencies.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
-                return composeOutput(frequencies);
-            } catch (Exception e) {
-                return "Calculate Error";
-            }
+        }
+        try {
+            //split the input string with 1 to n pieces of spaces
+            List<Input> frequencies = countFrequencies(words);
+            frequencies.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+            return composeOutput(frequencies);
+        } catch (Exception e) {
+            return "Calculate Error";
         }
     }
 
     private static String composeOutput(List<Input> frequencies) {
         return frequencies.stream()
                 .map(w -> w.getValue() + " " + w.getWordCount())
-                .collect(java.util.stream.Collectors.joining("\n"));
+                .collect(Collectors.joining("\n"));
     }
 
     private List<Input> countFrequencies(String[] words) {
         return Arrays.stream(words)
-                .collect(Collectors.groupingBy(word -> word, java.util.stream.Collectors.counting()))
+                .collect(Collectors.groupingBy(word -> word, Collectors.counting()))
                 .entrySet().stream()
                 .map(entry -> new Input(entry.getKey(), entry.getValue().intValue()))
-                .collect(java.util.stream.Collectors.toList());
+                .collect(Collectors.toList());
     }
 }
