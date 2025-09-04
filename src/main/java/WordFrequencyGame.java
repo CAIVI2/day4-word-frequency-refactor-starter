@@ -22,13 +22,13 @@ public class WordFrequencyGame {
 
     private List<Input> sortByCountDesc(List<Input> frequencies) {
         return frequencies.stream()
-                .sorted((w1, w2) -> Integer.compare(w2.getWordCount(), w1.getWordCount()))
+                .sorted((w1, w2) -> Integer.compare(w2.wordCount(), w1.wordCount()))
                 .collect(Collectors.toList());
     }
 
     private String composeOutput(List<Input> frequencies) {
         return frequencies.stream()
-                .map(w -> w.getValue() + " " + w.getWordCount())
+                .map(w -> w.value() + " " + w.wordCount())
                 .collect(Collectors.joining("\n"));
     }
 
