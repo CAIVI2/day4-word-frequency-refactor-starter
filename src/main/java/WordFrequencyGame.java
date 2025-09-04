@@ -9,14 +9,10 @@ import java.time.LocalDateTime;
 
 public class WordFrequencyGame {
     public String getResult(String inputStr){
-
-
         if (inputStr.split("\\s+").length==1) {
             return inputStr + " 1";
         } else {
-
             try {
-
                 //split the input string with 1 to n pieces of spaces
                 String[] arr = inputStr.split("\\s+");
 
@@ -45,8 +41,6 @@ public class WordFrequencyGame {
                 }
                 return joiner.toString();
             } catch (Exception e) {
-
-
                 return "Calculate Error";
             }
         }
@@ -62,15 +56,10 @@ public class WordFrequencyGame {
                 arr.add(input);
                 map.put(input.getValue(), arr);
             }
-
             else {
                 map.get(input.getValue()).add(input);
             }
         }
-
-
         return map;
     }
-
-
 }
