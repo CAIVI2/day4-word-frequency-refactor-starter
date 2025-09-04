@@ -20,7 +20,7 @@ public class WordFrequencyGame {
         }
     }
 
-    private static String composeOutput(List<Input> frequencies) {
+    private String composeOutput(List<Input> frequencies) {
         return frequencies.stream()
                 .map(w -> w.getValue() + " " + w.getWordCount())
                 .collect(Collectors.joining("\n"));
