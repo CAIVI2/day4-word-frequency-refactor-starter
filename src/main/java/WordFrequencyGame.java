@@ -13,11 +13,17 @@ public class WordFrequencyGame {
         try {
             //split the input string with 1 to n pieces of spaces
             List<Input> frequencies = countFrequencies(words);
-            frequencies.sort((w1, w2) -> Integer.compare(w2.getWordCount(), w1.getWordCount()));
-            return composeOutput(frequencies);
+            List<Input> sortedFrequencies = sortByCountDesc(frequencies);
+            return composeOutput(sortedFrequencies);
         } catch (Exception e) {
             return "Calculate Error";
         }
+    }
+
+    private List<Input> sortByCountDesc(List<Input> frequencies) {
+        return frequencies.stream()
+                .sorted((w1, w2) -> Integer.compare(w2.getWordCount(), w1.getWordCount()))
+                .collect(Collectors.toList());
     }
 
     private String composeOutput(List<Input> frequencies) {
