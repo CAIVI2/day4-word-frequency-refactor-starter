@@ -13,7 +13,7 @@ public class WordFrequencyGame {
         try {
             //split the input string with 1 to n pieces of spaces
             List<Input> frequencies = countFrequencies(words);
-            frequencies.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+            frequencies.sort((w1, w2) -> Integer.compare(w2.getWordCount(), w1.getWordCount()));
             return composeOutput(frequencies);
         } catch (Exception e) {
             return "Calculate Error";
