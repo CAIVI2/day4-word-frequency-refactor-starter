@@ -10,23 +10,13 @@ public class WordFrequencyGame {
         if (words.length == 1) {
             return inputStr + " 1";
         }
-        try {
-            List<Input> frequencies = countFrequencies(words);
-            List<Input> sortedFrequencies = sortByCountDesc(frequencies);
-            return composeOutput(sortedFrequencies);
-        } catch (Exception e) {
-            return "Calculate Error";
-        }
-    }
-
-    private List<Input> sortByCountDesc(List<Input> frequencies) {
-        return frequencies.stream()
-                .sorted((w1, w2) -> Integer.compare(w2.wordCount(), w1.wordCount()))
-                .collect(Collectors.toList());
+        List<Input> frequencies = countFrequencies(words);
+        return composeOutput(frequencies);
     }
 
     private String composeOutput(List<Input> frequencies) {
         return frequencies.stream()
+                .sorted((w1, w2) -> Integer.compare(w2.wordCount(), w1.wordCount()))
                 .map(w -> w.value() + " " + w.wordCount())
                 .collect(Collectors.joining("\n"));
     }
