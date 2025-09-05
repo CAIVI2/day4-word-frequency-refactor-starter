@@ -10,8 +10,12 @@ public class WordFrequencyGame {
         if (words.length == 1) {
             return inputStr + " 1";
         }
-        List<Input> frequencies = countFrequencies(words);
-        return composeOutput(frequencies);
+        try {
+            List<Input> frequencies = countFrequencies(words);
+            return composeOutput(frequencies);
+        } catch (Exception e) {
+            return "Calculate Error";
+        }
     }
 
     private String composeOutput(List<Input> frequencies) {
