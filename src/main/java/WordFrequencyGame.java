@@ -11,7 +11,6 @@ public class WordFrequencyGame {
             return inputStr + " 1";
         }
         try {
-            //split the input string with 1 to n pieces of spaces
             List<Input> frequencies = countFrequencies(words);
             List<Input> sortedFrequencies = sortByCountDesc(frequencies);
             return composeOutput(sortedFrequencies);
